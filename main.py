@@ -80,8 +80,7 @@ class ChatMenu(GridLayout):
 
 class Homepage(App):  # runs the homepage
     def build(self):
-        return Label(MainMenu)
-
+        return Label(text = 'MainMenu')
 
 if __name__ == "__main__":
     Homepage().run()

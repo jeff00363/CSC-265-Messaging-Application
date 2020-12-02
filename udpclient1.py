@@ -1,13 +1,13 @@
 import socket
-recv_ip ="192.168.1.109"
-recv_port=4444
+from main import ConnectionInfo 
+recieved_ip = self.ipAddress
+recieved_port = self.portNumber
 
-s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+socketmain=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
-while 4 > 3 :
-    msg = input ("Enter your message:")
-    nmsg = msg.encode('ascii')
-    s.sendto(nmsg,(recv_ip,recv_port))
-    print("\n")
-    print(s.recvfrom(100))
-s.close()
+while True :
+    from main import updateMessages
+    messgage = (updateMessages(self.message))
+    decodemessage = msg.encode('ascii')
+    socketmain.sendto(decodemessage,(recieved_ip,recieved_port))
+socketmain.close()

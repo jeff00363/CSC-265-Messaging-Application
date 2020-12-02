@@ -96,6 +96,7 @@ class messageDisplay(ScrollView):
 
         self.scroll_to(self.scroll_to_point)
 
+
 class ChatPage(GridLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -130,9 +131,7 @@ class HomepageLogin(App):  # runs the homepage and login
         self.display.add_widget(mains)
         return self.display
 
-
-
-    def create_chat_page(self):
+    def create(self):
         self.chatPage = ChatPage()
         mains = Screen(name='Chat')
         mains.add_widget(self.chatPage)

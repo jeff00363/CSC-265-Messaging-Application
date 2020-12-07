@@ -1,8 +1,9 @@
-from PyQt5 import QtCore, QtWidgets
-import client_ui
-import connect_ui
+import random
+import socket
+import sys
 
-import sys, socket, random
+
+from PyQt5 import QtCore, QtWidgets
 
 format = 'utf-8'
 
@@ -30,7 +31,7 @@ class Client(object):
         self.chat_ui = client_ui.Ui_Form()
         self.chat_ui.setupUi(self.chatWidget)
         self.chat_ui.pushButton.clicked.connect(self.send_msg)
-        self.connect_ui = connect_ui.Ui_Form()
+        self.connect_ui = PyQt5.Ui_Form()
         self.connect_ui.setupUi(self.connectWidget)
         self.connect_ui.pushButton.clicked.connect(self.connect_butt)
         self.mainWindow.setGeometry(QtCore.QRect(1080, 20, 350, 500))

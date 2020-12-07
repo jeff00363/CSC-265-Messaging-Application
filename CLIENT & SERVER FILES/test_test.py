@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtWidgets
-import MessagingScreen
+import client_ui
 import connect_ui
 
 import sys, socket, random

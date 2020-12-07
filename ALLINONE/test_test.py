@@ -1,7 +1,8 @@
 import random
 import socket
 import sys
-
+from ALLINONE import MessagingScreen
+from ALLINONE import LoginScreen
 
 from PyQt5 import QtCore, QtWidgets
 
@@ -28,10 +29,10 @@ class Client(object):
         self.connectWidget = QtWidgets.QWidget(self.mainWindow)
         self.chatWidget = QtWidgets.QWidget(self.mainWindow)
         self.chatWidget.setHidden(True)
-        self.chat_ui = client_ui.Ui_Form()
+        self.chat_ui = MessagingScreen.Ui_Form()
         self.chat_ui.setupUi(self.chatWidget)
         self.chat_ui.pushButton.clicked.connect(self.send_msg)
-        self.connect_ui = PyQt5.Ui_Form()
+        self.connect_ui = LoginScreen.Ui_Form()
         self.connect_ui.setupUi(self.connectWidget)
         self.connect_ui.pushButton.clicked.connect(self.connect_butt)
         self.mainWindow.setGeometry(QtCore.QRect(1080, 20, 350, 500))

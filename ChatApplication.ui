@@ -104,6 +104,9 @@ p, li { white-space: pre-wrap; }
     </property>
    </widget>
    <widget class="QMenu" name="menuCurrent_Messages">
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="title">
      <string>Current Messages</string>
     </property>

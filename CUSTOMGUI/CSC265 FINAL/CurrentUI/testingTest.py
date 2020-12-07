@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtWidgets
-import inappdialog
-import chatapp
+from CurrentUI import chatapp
+from CurrentUI import inappdialog
 from cryptography.fernet import Fernet
 
 import sys, socket, random
@@ -44,10 +44,10 @@ class Client(object):
         self.connectWidget = QtWidgets.QWidget(self.mainWindow)
         self.chatWidget = QtWidgets.QWidget(self.mainWindow)
         self.chatWidget.setHidden(True)
-        self.chat_ui = client_ui.Ui_Form()
+        self.chat_ui = inappdialog.Ui_ChatWindow()
         self.chat_ui.setupUi(self.chatWidget)
         self.chat_ui.pushButton.clicked.connect(self.send_msg)
-        self.connect_ui = connect_ui.Ui_Form()
+        self.connect_ui = chatapp.Ui_MainWindow()
         self.connect_ui.setupUi(self.connectWidget)
         self.connect_ui.pushButton.clicked.connect(self.connect_butt)
         self.mainWindow.setGeometry(QtCore.QRect(1080, 20, 350, 500))
@@ -79,7 +79,7 @@ class Client(object):
             print("--Thread started--")
 
     def msg_display(self, msg):
-        self.chat_ui.textBrowser.append(msg)
+        self.chat_ui.RecievedMessages.append(msg)
 
     def connect(self, userIP, portNum, userName):
         try:
@@ -96,7 +96,7 @@ class Client(object):
     def send_msg(self):
         message = self.chat_ui.textEdit.toPlainText()
         msg_en = encrypt(message).decode()
-        self.chat_ui.textBrowser.append("You:- " + message)
+        self.chat_ui.SentMessages.append("You:- " + message)
         print("You:- " + message)
         try:
             self.user.send(msg_en.encode(format))

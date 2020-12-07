@@ -1,10 +1,29 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_Form(object):
     def setupUi(self, Form):
+        # Sets the base size of the input forum when opened
         Form.setObjectName("Form")
-        Form.resize(324, 336)
-        self.hostTextEdit = QtWidgets.QPlainTextEdit(Form)
+        Form.resize(792, 354)
+
+        # Sets the spacing and magest the location of the boxes
+        self.centralwidget = QtWidgets.QWidget(Form)
+        self.centralwidget.setObjectName("centralwidget")
+        self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(30, 20, 731, 264))
+        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setObjectName("verticalLayout")
+
+        # Sets the font to a differnt style in the input box
+        self.hostTextEdit = QtWidgets.QTextEdit(self.verticalLayoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Palatino Linotype")
+        self.hostTextEdit.setFont(font)
+
+        # User enter the data for the chat such as ip and port
         self.hostTextEdit.setGeometry(QtCore.QRect(160, 40, 145, 30))
         self.hostTextEdit.setObjectName("hostTextEdit")
         self.portTextEdit = QtWidgets.QPlainTextEdit(Form)
@@ -39,6 +58,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
+
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate

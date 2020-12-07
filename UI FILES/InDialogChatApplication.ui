@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ChatWindow</class>
- <widget class="QMainWindow" name="ChatWindow">
+ <class>Ui_Form</class>
+ <widget class="QMainWindow" name="Ui_Form">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -72,7 +72,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit">
+      <widget class="QLineEdit" name="textEdit">
        <property name="font">
         <font>
          <family>Palatino Linotype</family>
@@ -86,7 +86,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="SendButton">
+      <widget class="QPushButton" name="send">
        <property name="font">
         <font>
          <pointsize>15</pointsize>
@@ -111,17 +111,11 @@
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuStart_Page">
-    <property name="title">
-     <string>Start Page</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuCurrent_Message">
     <property name="title">
      <string>Current Message</string>
     </property>
    </widget>
-   <addaction name="menuStart_Page"/>
    <addaction name="menuCurrent_Message"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

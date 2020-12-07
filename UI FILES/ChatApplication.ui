@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Ui_Form</class>
+ <widget class="QMainWindow" name="Ui_Form">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -25,7 +25,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QTextEdit" name="USERNAME">
+      <widget class="QTextEdit" name="nameTextEdit">
        <property name="font">
         <font>
          <family>Palatino Linotype</family>
@@ -43,7 +43,7 @@ p, li { white-space: pre-wrap; }
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QTextEdit" name="IPV4">
+        <widget class="QTextEdit" name="hostTextEdit">
          <property name="html">
           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -54,7 +54,7 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item>
-        <widget class="QTextEdit" name="PORT">
+        <widget class="QTextEdit" name="portTextEdit">
          <property name="html">
           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -67,7 +67,7 @@ p, li { white-space: pre-wrap; }
       </layout>
      </item>
      <item>
-      <widget class="QPushButton" name="LOGINBTN">
+      <widget class="QPushButton" name="pushButton">
        <property name="font">
         <font>
          <family>Onyx</family>
@@ -103,16 +103,7 @@ p, li { white-space: pre-wrap; }
      <string>Start Page</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menuCurrent_Messages">
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="title">
-     <string>Current Messages</string>
-    </property>
-   </widget>
    <addaction name="menuLogin_Page"/>
-   <addaction name="menuCurrent_Messages"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

@@ -3,6 +3,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from CurrentUI import chatapp
 from CurrentUI import inappdialog
 from cryptography.fernet import Fernet
+import sys
 
 import sys, socket, random
 
@@ -41,9 +42,9 @@ class ReceiveThread(QtCore.QThread):
 class Client(object):
     def __init__(self):
         self.messages = []
-        self.mainWindow = QtWidgets.QMainWindow()
-        self.connectWidget = QtWidgets.QWidget(self.mainWindow)
-        self.chatWidget = QtWidgets.QWidget(self.mainWindow)
+        self.ChatWindow = QtWidgets.QMainWindow()
+        self.connectWidget = QtWidgets.QWidget(self.ChatWindow)
+        self.chatWidget = QtWidgets.QWidget(self.ChatWindow)
         self.chatWidget.setHidden(True)
         self.chat_ui = inappdialog.Ui_ChatWindow()
         self.chat_ui.setupUi(self.chatWidget)
@@ -51,8 +52,8 @@ class Client(object):
         self.connect_ui = chatapp.Ui_MainWindow()
         self.connect_ui.setupUi(self.connectWidget)
         self.connect_ui.pushButton.clicked.connect(self.connect_butt)
-        self.mainWindow.setGeometry(QtCore.QRect(1080, 20, 350, 500))
-        self.mainWindow.show()
+        self.ChatWindow.setGeometry(QtCore.QRect(1080, 20, 350, 500))
+        self.ChatWindow.show()
         self.user = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     def connect_butt(self):

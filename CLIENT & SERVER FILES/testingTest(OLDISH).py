@@ -1,25 +1,10 @@
 from PyQt5 import QtCore, QtWidgets
 import client_ui
 import connect_ui
-from cryptography.fernet import Fernet
 
 import sys, socket, random
 
 format = 'utf-8'
-
-listKey = [b'a3uo8T5xtcfRIVbWuMmkIDjAiRnFff8ZoBVOagf16xg=']
-
-def encrypt(msg):
-    message = msg.encode()
-    f = Fernet(listKey[0])
-    encrypt_msg = f.encrypt(message)
-    return encrypt_msg
-
-def decrpyt(msg):
-    message = msg
-    f = Fernet(listKey[0])
-    decrpyt_msg = f.decrypt(encrypt(message))
-    return decrpyt_msg
 
 
 class ReceiveThread(QtCore.QThread):
@@ -32,11 +17,9 @@ class ReceiveThread(QtCore.QThread):
             self.receive_msg()
     def receive_msg(self):
         message = self.socket.recv(2048)
-        m1 = message.decode()
-        decrpyt_mg = decrpyt(m1)
-        print(decrpyt_mg)
-        self.sig.emit(decrpyt_mg)
-
+        message = message.decode(format)
+        print(message)
+        self.sig.emit(message)
 class Client(object):
     def __init__(self):
         self.messages = []
@@ -95,11 +78,10 @@ class Client(object):
 
     def send_msg(self):
         message = self.chat_ui.textEdit.toPlainText()
-        msg_en = encrypt(message).decode()
         self.chat_ui.textBrowser.append("You:- " + message)
         print("You:- " + message)
         try:
-            self.user.send(msg_en.encode(format))
+            self.user.send(message.encode(format))
         except Exception as unable_send:
             print('Unable to send msg_display %s' % unable_send)
         self.chat_ui.textEdit.clear()

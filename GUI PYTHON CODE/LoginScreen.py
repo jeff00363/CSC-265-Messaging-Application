@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'chatapp.ui'
+# Form implementation generated from reading ui file 'LoginScreen.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.1
 #
@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(792, 354)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+class Ui_Ui_Form(object):
+    def setupUi(self, Ui_Form):
+        Ui_Form.setObjectName("Ui_Form")
+        Ui_Form.resize(792, 354)
+        self.centralwidget = QtWidgets.QWidget(Ui_Form)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(30, 20, 731, 264))
@@ -23,22 +23,22 @@ class Ui_MainWindow(object):
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.USERNAME = QtWidgets.QTextEdit(self.verticalLayoutWidget)
+        self.nameTextEdit = QtWidgets.QTextEdit(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Palatino Linotype")
-        self.USERNAME.setFont(font)
-        self.USERNAME.setObjectName("USERNAME")
-        self.verticalLayout.addWidget(self.USERNAME)
+        self.nameTextEdit.setFont(font)
+        self.nameTextEdit.setObjectName("nameTextEdit")
+        self.verticalLayout.addWidget(self.nameTextEdit)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.IPV4 = QtWidgets.QTextEdit(self.verticalLayoutWidget)
-        self.IPV4.setObjectName("IPV4")
-        self.horizontalLayout.addWidget(self.IPV4)
-        self.PORT = QtWidgets.QTextEdit(self.verticalLayoutWidget)
-        self.PORT.setObjectName("PORT")
-        self.horizontalLayout.addWidget(self.PORT)
+        self.hostTextEdit = QtWidgets.QTextEdit(self.verticalLayoutWidget)
+        self.hostTextEdit.setObjectName("hostTextEdit")
+        self.horizontalLayout.addWidget(self.hostTextEdit)
+        self.portTextEdit = QtWidgets.QTextEdit(self.verticalLayoutWidget)
+        self.portTextEdit.setObjectName("portTextEdit")
+        self.horizontalLayout.addWidget(self.portTextEdit)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.LOGINBTN = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.pushButton = QtWidgets.QPushButton(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Onyx")
         font.setPointSize(23)
@@ -46,57 +46,52 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.LOGINBTN.setFont(font)
-        self.LOGINBTN.setAutoDefault(True)
-        self.LOGINBTN.setObjectName("LOGINBTN")
-        self.verticalLayout.addWidget(self.LOGINBTN)
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.pushButton.setFont(font)
+        self.pushButton.setAutoDefault(True)
+        self.pushButton.setObjectName("pushButton")
+        self.verticalLayout.addWidget(self.pushButton)
+        Ui_Form.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(Ui_Form)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 792, 21))
         self.menubar.setObjectName("menubar")
         self.menuLogin_Page = QtWidgets.QMenu(self.menubar)
         self.menuLogin_Page.setObjectName("menuLogin_Page")
-        self.menuCurrent_Messages = QtWidgets.QMenu(self.menubar)
-        self.menuCurrent_Messages.setAutoFillBackground(False)
-        self.menuCurrent_Messages.setObjectName("menuCurrent_Messages")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        Ui_Form.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(Ui_Form)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        Ui_Form.setStatusBar(self.statusbar)
         self.menubar.addAction(self.menuLogin_Page.menuAction())
-        self.menubar.addAction(self.menuCurrent_Messages.menuAction())
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(Ui_Form)
+        QtCore.QMetaObject.connectSlotsByName(Ui_Form)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, Ui_Form):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "ChatApplication"))
-        self.USERNAME.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        Ui_Form.setWindowTitle(_translate("Ui_Form", "ChatApplication"))
+        self.nameTextEdit.setHtml(_translate("Ui_Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Palatino Linotype\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:18pt; font-weight:600; font-style:italic;\">Enter Your Username</span></p></body></html>"))
-        self.IPV4.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.hostTextEdit.setHtml(_translate("Ui_Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; font-style:italic;\">Enter The Recipients IPV4 Address</span></p></body></html>"))
-        self.PORT.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.portTextEdit.setHtml(_translate("Ui_Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; font-style:italic;\">Enter The Recipients Port Number</span></p></body></html>"))
-        self.LOGINBTN.setText(_translate("MainWindow", "START CHAT!!"))
-        self.menuLogin_Page.setTitle(_translate("MainWindow", "Start Page"))
-        self.menuCurrent_Messages.setTitle(_translate("MainWindow", "Current Messages"))
+        self.pushButton.setText(_translate("Ui_Form", "START CHAT!!"))
+        self.menuLogin_Page.setTitle(_translate("Ui_Form", "Start Page"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    Ui_Form = QtWidgets.QMainWindow()
+    ui = Ui_Ui_Form()
+    ui.setupUi(Ui_Form)
+    Ui_Form.show()
     sys.exit(app.exec_())

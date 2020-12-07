@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'inappdialog.ui'
+# Form implementation generated from reading ui file 'MessagingScreen.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.1
 #
@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_ChatWindow(object):
-    def setupUi(self, ChatWindow):
-        ChatWindow.setObjectName("ChatWindow")
-        ChatWindow.resize(800, 600)
-        self.centralwidget = QtWidgets.QWidget(ChatWindow)
+class Ui_Ui_Form(object):
+    def setupUi(self, Ui_Form):
+        Ui_Form.setObjectName("Ui_Form")
+        Ui_Form.resize(800, 600)
+        self.centralwidget = QtWidgets.QWidget(Ui_Form)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(20, 20, 751, 511))
@@ -42,54 +42,50 @@ class Ui_ChatWindow(object):
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.horizontalLayout.addWidget(self.scrollArea)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.lineEdit = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.textEdit = QtWidgets.QLineEdit(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Palatino Linotype")
         font.setPointSize(16)
         font.setItalic(True)
-        self.lineEdit.setFont(font)
-        self.lineEdit.setObjectName("lineEdit")
-        self.verticalLayout.addWidget(self.lineEdit)
-        self.SendButton = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.textEdit.setFont(font)
+        self.textEdit.setObjectName("textEdit")
+        self.verticalLayout.addWidget(self.textEdit)
+        self.send = QtWidgets.QPushButton(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(15)
         font.setBold(True)
         font.setWeight(75)
-        self.SendButton.setFont(font)
-        self.SendButton.setObjectName("SendButton")
-        self.verticalLayout.addWidget(self.SendButton)
-        ChatWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(ChatWindow)
+        self.send.setFont(font)
+        self.send.setObjectName("send")
+        self.verticalLayout.addWidget(self.send)
+        Ui_Form.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(Ui_Form)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
-        self.menuStart_Page = QtWidgets.QMenu(self.menubar)
-        self.menuStart_Page.setObjectName("menuStart_Page")
         self.menuCurrent_Message = QtWidgets.QMenu(self.menubar)
         self.menuCurrent_Message.setObjectName("menuCurrent_Message")
-        ChatWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(ChatWindow)
+        Ui_Form.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(Ui_Form)
         self.statusbar.setObjectName("statusbar")
-        ChatWindow.setStatusBar(self.statusbar)
-        self.menubar.addAction(self.menuStart_Page.menuAction())
+        Ui_Form.setStatusBar(self.statusbar)
         self.menubar.addAction(self.menuCurrent_Message.menuAction())
 
-        self.retranslateUi(ChatWindow)
-        QtCore.QMetaObject.connectSlotsByName(ChatWindow)
+        self.retranslateUi(Ui_Form)
+        QtCore.QMetaObject.connectSlotsByName(Ui_Form)
 
-    def retranslateUi(self, ChatWindow):
+    def retranslateUi(self, Ui_Form):
         _translate = QtCore.QCoreApplication.translate
-        ChatWindow.setWindowTitle(_translate("ChatWindow", "InChat"))
-        self.lineEdit.setText(_translate("ChatWindow", "ENTER YOUR MESSAGE"))
-        self.SendButton.setText(_translate("ChatWindow", "Send Message"))
-        self.menuStart_Page.setTitle(_translate("ChatWindow", "Start Page"))
-        self.menuCurrent_Message.setTitle(_translate("ChatWindow", "Current Message"))
+        Ui_Form.setWindowTitle(_translate("Ui_Form", "InChat"))
+        self.textEdit.setText(_translate("Ui_Form", "ENTER YOUR MESSAGE"))
+        self.send.setText(_translate("Ui_Form", "Send Message"))
+        self.menuCurrent_Message.setTitle(_translate("Ui_Form", "Current Message"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    ChatWindow = QtWidgets.QMainWindow()
-    ui = Ui_ChatWindow()
-    ui.setupUi(ChatWindow)
-    ChatWindow.show()
+    Ui_Form = QtWidgets.QMainWindow()
+    ui = Ui_Ui_Form()
+    ui.setupUi(Ui_Form)
+    Ui_Form.show()
     sys.exit(app.exec_())

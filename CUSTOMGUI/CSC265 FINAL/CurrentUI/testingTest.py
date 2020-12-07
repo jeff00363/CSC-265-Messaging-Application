@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets
 from CurrentUI import chatapp
 from CurrentUI import inappdialog
 from cryptography.fernet import Fernet

@@ -7,7 +7,9 @@ import sys, socket, random
 #adds gui
 import LoginScreen.py, MessagingScreen.py
 
-def encryption(msg):
+def encrypt(msg):
+    pass
+def decrypt(msg):
     pass
 class clientApp():
     """

@@ -16,7 +16,7 @@ def decrypt(msg):
     pass
 
 
-class clientApp():
+class clientApp:
     """
     docstring
     """

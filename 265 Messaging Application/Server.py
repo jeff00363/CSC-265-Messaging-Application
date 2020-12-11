@@ -42,11 +42,8 @@ def send_msg(msg, otherClients):
         for userName in inRoom:
             if userName != otherClients:
                 #user_msg = otherClients + ':-' + msg
-                userMsg = decrypt(msg)
-                decodedMsg = userMsg
-                workingMsg = otherClients + ':-' + decodedMsg
-                encryptMsg = encrypt(workingMsg)
-                inRoom[userName].send(encryptMsg)
+                ser_msg = msg
+                inRoom[userName].send(user_msg.encode())
 
 def msgPipeline(client_conn, userName):
     print('--Waiting for a response\n')

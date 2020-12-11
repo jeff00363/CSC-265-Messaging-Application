@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4842c9b5-35da-443c-8fec-5e6c84480d72" name="Default Changelist" comment="" />
+    <list default="true" id="4842c9b5-35da-443c-8fec-5e6c84480d72" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/265 Messaging Application/encrypt7.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/265 Messaging Application/Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/265 Messaging Application/Server.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +24,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/265 ChatApp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -40,6 +43,7 @@
       <workItem from="1607651669401" duration="2062000" />
       <workItem from="1607663107059" duration="82000" />
       <workItem from="1607697339001" duration="1279000" />
+      <workItem from="1607704357011" duration="623000" />
     </task>
     <servers />
   </component>

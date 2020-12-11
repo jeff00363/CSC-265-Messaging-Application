@@ -1,6 +1,4 @@
 import socket, threading
-from cryptography.fernet import Fernet
-
 
 inRoom = {}
 port = 9999
@@ -10,13 +8,6 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((hostIP, port))
 server.listen(20)
 
-listKey = [b'a3uo8T5xtcfRIVbWuMmkIDjAiRnFff8ZoBVOagf16xg=']
-f = Fernet(listKey[0])
-
-def encrypt(msg):
-    eCr = f.encrypt(msg)
-    print(eCr)
-    return eCr
 
 def handshake():
     print("--Server running on \n IP : %s  \n Port : %s" % (hostIP, port))
@@ -36,8 +27,8 @@ def send_msg(msg, otherClients):
     if len(inRoom) is not None:
         for userName in inRoom:
             if userName != otherClients:
-                #user_msg = otherClients + ':-' + msg
-                user_msg = msg
+                #user_msg = otherClients + ':- ' + msg.decode()
+                user_msg = otherClients + ':- ' + msg
                 inRoom[userName].send(user_msg.encode())
 
 def msgPipeline(client_conn, userName):

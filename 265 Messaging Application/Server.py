@@ -43,7 +43,7 @@ def send_msg(msg, otherClients):
             if userName != otherClients:
                 #user_msg = otherClients + ':-' + msg
                 user_msg = msg
-                inRoom[userName].send(user_msg.encode()))
+                inRoom[userName].send(user_msg.encode())
 
 def msgPipeline(client_conn, userName):
     print('--Waiting for a response\n')

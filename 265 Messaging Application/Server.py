@@ -1,6 +1,8 @@
 import socket, threading
 from cryptography.fernet import Fernet
 
+format = 'utf-8'
+
 inRoom = {}
 port = 9997
 hostIP = socket.gethostbyname(socket.gethostname())
@@ -18,7 +20,7 @@ def encrypt(msg):
     return eCr
 def decrypt(msg):
     dCr = f.decrypt(msg)
-    decoded = dCr.decode()
+    decoded = dCr.decode(format)
     print(dCr)
     return decoded
 
@@ -28,7 +30,7 @@ def handshake():
 
     while True:
         client_conn, addr = server.accept()
-        userName = client_conn.recv(2048).decode()
+        userName = client_conn.recv(2048).decode(format)
         inRoom[userName] = client_conn
 
         thread = threading.Thread(target=msgPipeline, args=[client_conn, userName])
@@ -43,7 +45,7 @@ def send_msg(msg, otherClients):
             if userName != otherClients:
                 #user_msg = otherClients + ':-' + msg
                 user_msg = msg
-                inRoom[userName].send(user_msg.encode())
+                inRoom[userName].send(user_msg.encode(format))
 
 def msgPipeline(client_conn, userName):
     print('--Waiting for a response\n')

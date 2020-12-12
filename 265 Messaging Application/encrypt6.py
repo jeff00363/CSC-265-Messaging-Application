@@ -2,12 +2,12 @@ from PyQt5 import QtCore, QtWidgets
 import mainChat
 import logIn
 from cryptography.fernet import Fernet
-import sys, socket, random
+import sys, socket
+
+format = 'utf-8'
 
 listKey = [b'a3uo8T5xtcfRIVbWuMmkIDjAiRnFff8ZoBVOagf16xg=']
 f = Fernet(listKey[0])
-
-format = 'utf-8'
 
 
 def encrypt(msg):
@@ -18,101 +18,95 @@ def encrypt(msg):
 
 def decrypt(msg):
     dCr = f.decrypt(msg)
-    decoded = dCr.decode()
+    decoded = dCr.decode(format)
     print(dCr)
     return decoded
 
 
-class ReceiveThread(QtCore.QThread):
-    sig = QtCore.pyqtSignal(str)
-
-    def __init__(self, client_socket):
-        super(ReceiveThread, self).__init__()
-        self.socket = client_socket
-
-    def run(self):
-        while True:
-            self.receive_msg()
-
-    def receive_msg(self):
-        message = self.socket.recv(2048)
-        deCr = decrypt(message)
-        print(deCr)
-        self.sig.emit(deCr)
-
-
-class Client(object):
+class makeClient(object):
     def __init__(self):
         self.messages = []
-        self.mainWindow = QtWidgets.QMainWindow()
-        self.connectWidget = QtWidgets.QWidget(self.mainWindow)
-        self.chatWidget = QtWidgets.QWidget(self.mainWindow)
-        self.chatWidget.setHidden(True)
-        self.chat_ui = mainChat.Ui_Form()
-        self.chat_ui.setupUi(self.chatWidget)
-        self.chat_ui.pushButton.clicked.connect(self.send_msg)
-        self.connect_ui = logIn.Ui_Form()
-        self.connect_ui.setupUi(self.connectWidget)
-        self.connect_ui.pushButton.clicked.connect(self.connect_butt)
-        self.mainWindow.setGeometry(QtCore.QRect(1080, 20, 350, 500))
-        self.mainWindow.show()
-        self.user = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.mainChat = QtWidgets.QMainWindow()
+        self.connUi = QtWidgets.QWidget(self.mainChat)
+        self.connChatUi = QtWidgets.QWidget(self.mainChat)
+        self.connChatUi.setHidden(True)
+        self.chatGfx = mainChat.Ui_Form()
+        self.chatGfx.setupUi(self.connChatUi)
+        self.chatGfx.pushButton.clicked.connect(self.sendMsg)
+        self.FromUIConn = logIn.Ui_Form()
+        self.FromUIConn.setupUi(self.connUi)
+        self.FromUIConn.pushButton.clicked.connect(self.connectUI)
+        self.mainChat.setGeometry(QtCore.QRect(1080, 20, 350, 500))
+        self.mainChat.show()
+        self.chatUser = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    def connect_butt(self):
-        host = self.connect_ui.hostTextEdit.toPlainText()
-        port = self.connect_ui.portTextEdit.toPlainText()
-        nickname = self.connect_ui.nameTextEdit.toPlainText()
-        if len(host) == 0:
-            host = socket.gethostbyname(socket.gethostname())
-        if len(port) == 0:
-            port = 9997
-        else:
-            try:
-                port = int(port)
-            except Exception as invalid:
-                print('Invalid portNum number %s' % invalid)
-        if len(nickname) < 1:
-            nickname = socket.gethostname()
-        nickname = nickname + "#" + str(random.randint(1, 9997))
-        if self.connect(host, port, nickname):
-            self.connectWidget.setHidden(True)
-            self.chatWidget.setVisible(True)
-            self.recv = ReceiveThread(self.user)
-            self.recv.sig.connect(self.msg_display)
-            self.recv.start()
-            print("--Thread started--")
-
-    def msg_display(self, msg):
-        self.chat_ui.textBrowser.append(msg)
-
-    def connect(self, userIP, portNum, userName):
+    def connToServ(self, userIP, portNum, userName):
         try:
-            self.user.connect((userIP, portNum))
-            self.user.send(userName.encode())
+            self.chatUser.connect((userIP, portNum))
+            self.chatUser.send(userName.encode(format))
             print("--Connected to server--")
             return True
         except Exception as cant_connect:
             print('Unable to connect to server %s' % cant_connect)
-            self.connect_ui.hostTextEdit.clear()
-            self.connect_ui.portTextEdit.clear()
+            self.FromUIConn.hostTextEdit.clear()
+            self.FromUIConn.portTextEdit.clear()
             return False
 
-    def send_msg(self):
-        nickname = self.connect_ui.nameTextEdit.toPlainText()
-        message = (str(nickname) + ": " + (str(self.chat_ui.textEdit.toPlainText())))
-        encodedMsg = message.encode()
+    def sendMsg(self):
+        nickname = self.FromUIConn.nameTextEdit.toPlainText()
+        msgUser = (str(nickname) + ": " + (str(self.chatGfx.textEdit.toPlainText())))
+        encodedMsg = msgUser.encode(format)
         encryptedMsg = encrypt(encodedMsg)
-        self.chat_ui.textBrowser.append(message)
-        print(message)
+        self.chatGfx.textBrowser.append(msgUser)
         try:
-            self.user.send(encryptedMsg)
-            # self.user.send(message.encode(format))
+            self.chatUser.send(encryptedMsg)
         except Exception as unable_send:
             print('Unable to send msgDisplay %s' % unable_send)
-        self.chat_ui.textEdit.clear()
+        self.chatGfx.textEdit.clear()
+
+    def msgDisplay(self, msg):
+        self.chatGfx.textBrowser.append(msg)
+    def connectUI(self):
+        userIP = self.FromUIConn.hostTextEdit.toPlainText()
+        PORT = self.FromUIConn.portTextEdit.toPlainText()
+        userName = self.FromUIConn.nameTextEdit.toPlainText()
+        if len(userIP) == 0:
+            userIP = socket.gethostbyname(socket.gethostname())
+        if len(PORT) == 0:
+            PORT = 9997
+        else:
+            try:
+                PORT = int(PORT)
+            except Exception as invalid:
+                print('Invalid portNum number %s' % invalid)
+        if len(userName) < 1:
+            userName = socket.gethostname()
+        if self.connToServ(userIP, PORT, userName):
+            self.connUi.setHidden(True)
+            self.connChatUi.setVisible(True)
+            self.recv = Thread(self.chatUser)
+            self.recv.sig.connect(self.msgDisplay)
+            self.recv.start()
+            print("--Thread started--")
 
 
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    c = Client()
-    app.exec()
+class Thread(QtCore.QThread):
+    sig = QtCore.pyqtSignal(str)
+
+    def __init__(self, client_socket):
+        super(Thread, self).__init__()
+        self.socket = client_socket
+
+    def run(self):
+        while 1 > 0:
+            self.recMsg()
+
+    def recMsg(self):
+        msg = self.socket.recv(2048)
+        deCr = decrypt(msg)
+        self.sig.emit(deCr)
+
+
+app = QtWidgets.QApplication(sys.argv)
+chatApp = makeClient()
+app.exec()

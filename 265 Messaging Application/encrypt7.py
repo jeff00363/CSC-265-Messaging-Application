@@ -98,7 +98,7 @@ class Client(object):
         print("You:- " + message)
         try:
             self.user.send(encryptedMsg)
-            #self.user.send(message.encode(format))
+            #self.chatUser.send(message.encode(format))
         except Exception as unable_send:
             print('Unable to send msgDisplay %s' % unable_send)
         self.chat_ui.textEdit.clear()

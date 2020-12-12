@@ -23,18 +23,18 @@ def decrypt(msg):
     return decoded
 
 
-class ReceiveThread(QtCore.QThread):
+class Thread(QtCore.QThread):
     sig = QtCore.pyqtSignal(str)
 
     def __init__(self, client_socket):
-        super(ReceiveThread, self).__init__()
+        super(Thread, self).__init__()
         self.socket = client_socket
 
     def run(self):
         while True:
-            self.receive_msg()
+            self.recMsg()
 
-    def receive_msg(self):
+    def recMsg(self):
         message = self.socket.recv(2048)
         deCr = decrypt(message)
         print(deCr)
@@ -50,39 +50,38 @@ class Client(object):
         self.chatWidget.setHidden(True)
         self.chat_ui = mainChat.Ui_Form()
         self.chat_ui.setupUi(self.chatWidget)
-        self.chat_ui.pushButton.clicked.connect(self.send_msg)
+        self.chat_ui.pushButton.clicked.connect(self.sendMsg)
         self.connect_ui = logIn.Ui_Form()
         self.connect_ui.setupUi(self.connectWidget)
-        self.connect_ui.pushButton.clicked.connect(self.connect_butt)
+        self.connect_ui.pushButton.clicked.connect(self.connectUI)
         self.mainWindow.setGeometry(QtCore.QRect(1080, 20, 350, 500))
         self.mainWindow.show()
         self.user = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    def connect_butt(self):
-        host = self.connect_ui.hostTextEdit.toPlainText()
-        port = self.connect_ui.portTextEdit.toPlainText()
-        nickname = self.connect_ui.nameTextEdit.toPlainText()
-        if len(host) == 0:
-            host = socket.gethostbyname(socket.gethostname())
-        if len(port) == 0:
-            port = 9997
+    def connectUI(self):
+        userIP = self.connect_ui.hostTextEdit.toPlainText()
+        PORT = self.connect_ui.portTextEdit.toPlainText()
+        userName = self.connect_ui.nameTextEdit.toPlainText()
+        if len(userIP) == 0:
+            userIP = socket.gethostbyname(socket.gethostname())
+        if len(PORT) == 0:
+            PORT = 9997
         else:
             try:
-                port = int(port)
+                PORT = int(PORT)
             except Exception as invalid:
                 print('Invalid portNum number %s' % invalid)
-        if len(nickname) < 1:
-            nickname = socket.gethostname()
-        nickname = nickname + "#" + str(random.randint(1, 9997))
-        if self.connect(host, port, nickname):
+        if len(userName) < 1:
+            userName = socket.gethostname()
+        if self.connect(userIP, PORT, userName):
             self.connectWidget.setHidden(True)
             self.chatWidget.setVisible(True)
-            self.recv = ReceiveThread(self.user)
-            self.recv.sig.connect(self.msg_display)
+            self.recv = Thread(self.user)
+            self.recv.sig.connect(self.msgDisplay)
             self.recv.start()
             print("--Thread started--")
 
-    def msg_display(self, msg):
+    def msgDisplay(self, msg):
         self.chat_ui.textBrowser.append(msg)
 
     def connect(self, userIP, portNum, userName):
@@ -97,7 +96,7 @@ class Client(object):
             self.connect_ui.portTextEdit.clear()
             return False
 
-    def send_msg(self):
+    def sendMsg(self):
         nickname = self.connect_ui.nameTextEdit.toPlainText()
         message = (str(nickname) + ": " + (str(self.chat_ui.textEdit.toPlainText())))
         encodedMsg = message.encode()

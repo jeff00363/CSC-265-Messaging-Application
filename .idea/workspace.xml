@@ -30,7 +30,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/UI" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -152,6 +152,8 @@
       <workItem from="1607706355796" duration="449000" />
       <workItem from="1607736577865" duration="5071000" />
       <workItem from="1607741792454" duration="42000" />
+      <workItem from="1607749317265" duration="229000" />
+      <workItem from="1607750258490" duration="50000" />
     </task>
     <task id="LOCAL-00001" summary="Added new file">
       <created>1607705111623</created>
@@ -209,7 +211,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607741576407</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added new file">
+      <created>1607749369139</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1607749369139</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added new file">
+      <created>1607749446625</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1607749446625</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

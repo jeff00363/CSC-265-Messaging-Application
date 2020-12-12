@@ -39,7 +39,7 @@ def handshake():
         print('Connection made from IP : %s, User name : %s\n' % (addr[0], userName))
         print('%s active connection(s) with the server remain\n' % len(inRoom))
 
-def send_msg(msg, otherClients):
+def sendMsg(msg, otherClients):
     if len(inRoom) is not None:
         for userName in inRoom:
             if userName != otherClients:
@@ -53,7 +53,7 @@ def msgPipeline(client_conn, userName):
         try:
             msg = client_conn.recv(2048).decode()
             msgEncode = msg
-            send_msg(msgEncode, userName)
+            sendMsg(msgEncode, userName)
             print(userName + ":- " + msg)
         except Exception as e:
             print(e)
@@ -66,5 +66,5 @@ def msgPipeline(client_conn, userName):
                 print('%s active connection(s) with the server remain\n' % len(inRoom))
             break
 
-if __name__ == "__main__":
-    handshake()
+
+handshake()

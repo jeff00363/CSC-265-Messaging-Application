@@ -74,6 +74,7 @@ class Client(object):
             self.recv.sig.connect(self.msg_display)
             self.recv.start()
             print("--Thread started--")
+        
 
     def msg_display(self, msg):
         self.chat_ui.textBrowser.append(msg)
@@ -91,7 +92,9 @@ class Client(object):
             return False
 
     def send_msg(self):
-        message = self.chat_ui.textEdit.toPlainText()
+        
+        nickname = self.connect_ui.nameTextEdit.toPlainText()
+        message = (str(nickname) + ": " + (str(self.chat_ui.textEdit.toPlainText())))
         encodedMsg = message.encode()
         encryptedMsg = encrypt(encodedMsg)
         self.chat_ui.textBrowser.append("You:- " + message)

@@ -58,7 +58,7 @@ class Client(object):
         if len(host) == 0:
             host = socket.gethostbyname(socket.gethostname())
         if len(port) == 0:
-            port = 9999
+            port = 9997
         else:
             try:
                 port = int(port)
@@ -66,7 +66,7 @@ class Client(object):
                 print('Invalid portNum number %s' % invalid)
         if len(nickname) < 1:
             nickname = socket.gethostname()
-        nickname = nickname + "#" + str(random.randint(1, 9999))
+        nickname = nickname + "#" + str(random.randint(1, 9997))
         if self.connect(host, port, nickname):
             self.connectWidget.setHidden(True)
             self.chatWidget.setVisible(True)
@@ -92,13 +92,12 @@ class Client(object):
             return False
 
     def send_msg(self):
-        
         nickname = self.connect_ui.nameTextEdit.toPlainText()
         message = (str(nickname) + ": " + (str(self.chat_ui.textEdit.toPlainText())))
         encodedMsg = message.encode()
         encryptedMsg = encrypt(encodedMsg)
-        self.chat_ui.textBrowser.append("You:- " + message)
-        print("You:- " + message)
+        self.chat_ui.textBrowser.append(message)
+        print(message)
         try:
             self.user.send(encryptedMsg)
             #self.user.send(message.encode(format))

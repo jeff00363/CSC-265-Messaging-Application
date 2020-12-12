@@ -2,7 +2,7 @@ import socket, threading
 from cryptography.fernet import Fernet
 
 inRoom = {}
-port = 9999
+port = 9997
 hostIP = socket.gethostbyname(socket.gethostname())
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

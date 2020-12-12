@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4842c9b5-35da-443c-8fec-5e6c84480d72" name="Default Changelist" comment="" />
+    <list default="true" id="4842c9b5-35da-443c-8fec-5e6c84480d72" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/265 Messaging Application/Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/265 Messaging Application/Server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/265 Messaging Application/encrypt6.py" beforeDir="false" afterPath="$PROJECT_DIR$/265 Messaging Application/encrypt6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/265 Messaging Application/encrypt8.py" beforeDir="false" afterPath="$PROJECT_DIR$/265 Messaging Application/encrypt8.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,9 +133,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.encrypt8" />
-        <item itemvalue="Python.encrypt7" />
         <item itemvalue="Python.encrypt6" />
         <item itemvalue="Python.Server" />
+        <item itemvalue="Python.encrypt7" />
       </list>
     </recent_temporary>
   </component>
@@ -148,6 +153,7 @@
       <workItem from="1607704357011" duration="1569000" />
       <workItem from="1607706000700" duration="29000" />
       <workItem from="1607706355796" duration="449000" />
+      <workItem from="1607736577865" duration="320000" />
     </task>
     <task id="LOCAL-00001" summary="Added new file">
       <created>1607705111623</created>
@@ -176,7 +182,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSC_265_Messaging_Application$encrypt8.coverage" NAME="encrypt8 Coverage Results" MODIFIED="1607706588384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/265 Messaging Application" />
     <SUITE FILE_PATH="coverage/CSC_265_Messaging_Application$encrypt7.coverage" NAME="encrypt7 Coverage Results" MODIFIED="1607706390286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/265 Messaging Application" />
-    <SUITE FILE_PATH="coverage/CSC_265_Messaging_Application$Server.coverage" NAME="Server Coverage Results" MODIFIED="1607706375247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/265 Messaging Application" />
-    <SUITE FILE_PATH="coverage/CSC_265_Messaging_Application$encrypt6.coverage" NAME="encrypt6 Coverage Results" MODIFIED="1607706380953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/265 Messaging Application" />
+    <SUITE FILE_PATH="coverage/CSC_265_Messaging_Application$Server.coverage" NAME="Server Coverage Results" MODIFIED="1607736795962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/265 Messaging Application" />
+    <SUITE FILE_PATH="coverage/CSC_265_Messaging_Application$encrypt6.coverage" NAME="encrypt6 Coverage Results" MODIFIED="1607736806231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/265 Messaging Application" />
   </component>
 </project>

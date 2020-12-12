@@ -9,29 +9,37 @@ f = Fernet(listKey[0])
 
 format = 'utf-8'
 
+
 def encrypt(msg):
     eCr = f.encrypt(msg)
     print(eCr)
     return eCr
+
+
 def decrypt(msg):
     dCr = f.decrypt(msg)
     decoded = dCr.decode()
     print(dCr)
     return decoded
 
+
 class ReceiveThread(QtCore.QThread):
     sig = QtCore.pyqtSignal(str)
+
     def __init__(self, client_socket):
         super(ReceiveThread, self).__init__()
         self.socket = client_socket
+
     def run(self):
         while True:
             self.receive_msg()
+
     def receive_msg(self):
         message = self.socket.recv(2048)
         deCr = decrypt(message)
         print(deCr)
         self.sig.emit(deCr)
+
 
 class Client(object):
     def __init__(self):
@@ -57,7 +65,7 @@ class Client(object):
         if len(host) == 0:
             host = socket.gethostbyname(socket.gethostname())
         if len(port) == 0:
-            port = 9999
+            port = 9997
         else:
             try:
                 port = int(port)
@@ -65,7 +73,7 @@ class Client(object):
                 print('Invalid portNum number %s' % invalid)
         if len(nickname) < 1:
             nickname = socket.gethostname()
-        nickname = nickname + "#" + str(random.randint(1, 9999))
+        nickname = nickname + "#" + str(random.randint(1, 9997))
         if self.connect(host, port, nickname):
             self.connectWidget.setHidden(True)
             self.chatWidget.setVisible(True)
@@ -90,14 +98,15 @@ class Client(object):
             return False
 
     def send_msg(self):
-        message = self.chat_ui.textEdit.toPlainText()
+        nickname = self.connect_ui.nameTextEdit.toPlainText()
+        message = (str(nickname) + ": " + (str(self.chat_ui.textEdit.toPlainText())))
         encodedMsg = message.encode()
         encryptedMsg = encrypt(encodedMsg)
-        self.chat_ui.textBrowser.append("You:- " + message)
-        print("You:- " + message)
+        self.chat_ui.textBrowser.append(message)
+        print(message)
         try:
             self.user.send(encryptedMsg)
-            #self.user.send(message.encode(format))
+            # self.user.send(message.encode(format))
         except Exception as unable_send:
             print('Unable to send msgDisplay %s' % unable_send)
         self.chat_ui.textEdit.clear()

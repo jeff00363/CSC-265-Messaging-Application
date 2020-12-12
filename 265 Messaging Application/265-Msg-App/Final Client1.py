@@ -37,7 +37,7 @@ class makeClient(object):
         self.chatGfx.userMsgInput.clicked.connect(self.sendMsg)
         self.FromUIConn = logIn.Ui_Form()
         self.FromUIConn.setupUi(self.connUi)
-        self.FromUIConn.userNameInput.clicked.connect(self.recvFromServ)
+        self.FromUIConn.userNameInput.clicked.connect(self.fromServ)
         self.mainChat.setGeometry(QtCore.QRect(1000, 550, 650, 500))
         self.mainChat.show()
 
@@ -63,7 +63,7 @@ class makeClient(object):
         self.chatGfx.userTxt.clear()
 
 # recv the msg from serv through the Thread that gets the message from the server and display it on the UI
-    def recvFromServ(self):
+    def fromServ(self):
         userName = self.FromUIConn.nameTextEdit.toPlainText()
         self.connToServ(userName)
         self.connUi.setHidden(True)

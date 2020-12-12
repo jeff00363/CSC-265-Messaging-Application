@@ -83,7 +83,7 @@ class Client(object):
         try:
             self.user.send(message.encode(format))
         except Exception as unable_send:
-            print('Unable to send msg_display %s' % unable_send)
+            print('Unable to send msgDisplay %s' % unable_send)
         self.chat_ui.textEdit.clear()
 
 

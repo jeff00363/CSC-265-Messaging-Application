@@ -4,35 +4,42 @@ import logIn
 from cryptography.fernet import Fernet
 import sys, socket, random
 
-
 listKey = [b'a3uo8T5xtcfRIVbWuMmkIDjAiRnFff8ZoBVOagf16xg=']
 f = Fernet(listKey[0])
 
 format = 'utf-8'
 
+
 def encrypt(msg):
     eCr = f.encrypt(msg)
     print(eCr)
     return eCr
+
+
 def decrypt(msg):
     dCr = f.decrypt(msg)
     decoded = dCr.decode()
     print(dCr)
     return decoded
 
+
 class ReceiveThread(QtCore.QThread):
     sig = QtCore.pyqtSignal(str)
+
     def __init__(self, client_socket):
         super(ReceiveThread, self).__init__()
         self.socket = client_socket
+
     def run(self):
         while True:
             self.receive_msg()
+
     def receive_msg(self):
         message = self.socket.recv(2048)
         deCr = decrypt(message)
         print(deCr)
         self.sig.emit(deCr)
+
 
 class Client(object):
     def __init__(self):
@@ -74,7 +81,6 @@ class Client(object):
             self.recv.sig.connect(self.msg_display)
             self.recv.start()
             print("--Thread started--")
-        
 
     def msg_display(self, msg):
         self.chat_ui.textBrowser.append(msg)
@@ -100,7 +106,7 @@ class Client(object):
         print(message)
         try:
             self.user.send(encryptedMsg)
-            #self.user.send(message.encode(format))
+            # self.user.send(message.encode(format))
         except Exception as unable_send:
             print('Unable to send msgDisplay %s' % unable_send)
         self.chat_ui.textEdit.clear()

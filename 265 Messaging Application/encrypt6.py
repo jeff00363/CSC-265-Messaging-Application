@@ -12,14 +12,12 @@ f = Fernet(listKey[0])
 
 def encrypt(msg):
     eCr = f.encrypt(msg)
-    print(eCr)
     return eCr
 
 
 def decrypt(msg):
     dCr = f.decrypt(msg)
     decoded = dCr.decode(format)
-    print(dCr)
     return decoded
 
 
@@ -67,20 +65,12 @@ class makeClient(object):
     def msgDisplay(self, msg):
         self.chatGfx.textBrowser.append(msg)
     def connectUI(self):
-        userIP = self.FromUIConn.hostTextEdit.toPlainText()
-        PORT = self.FromUIConn.portTextEdit.toPlainText()
+        userIP = socket.gethostbyname(socket.gethostname())
+        PORT = 9997
         userName = self.FromUIConn.nameTextEdit.toPlainText()
-        if len(userIP) == 0:
-            userIP = socket.gethostbyname(socket.gethostname())
-        if len(PORT) == 0:
-            PORT = 9997
-        else:
-            try:
-                PORT = int(PORT)
-            except Exception as invalid:
-                print('Invalid portNum number %s' % invalid)
+
         if len(userName) < 1:
-            userName = socket.gethostname()
+            userName = str(userIP)
         if self.connToServ(userIP, PORT, userName):
             self.connUi.setHidden(True)
             self.connChatUi.setVisible(True)
@@ -98,7 +88,7 @@ class Thread(QtCore.QThread):
         self.socket = client_socket
 
     def run(self):
-        while 1 > 0:
+        while True:
             self.recMsg()
 
     def recMsg(self):

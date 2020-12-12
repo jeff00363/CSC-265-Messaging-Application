@@ -36,7 +36,6 @@ def sendMsg(msg, otherClientUserName):
             user_msg = msg
             inRoom[userName].send(user_msg.encode(format))
 
-
 # this is where we can get our messages from the client. Server cant read them because we dont decrypt on serverside.
 # It also has a failsafe so if the client bugs out the server does crash. It just disconnects the client
 def msgPipeline(client_conn, userName):
